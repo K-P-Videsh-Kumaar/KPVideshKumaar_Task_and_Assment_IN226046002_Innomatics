@@ -1,0 +1,291 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "3a2cf9a7-bbde-4afb-a519-044ed62a230d",
+   "metadata": {},
+   "source": [
+    "### Problem Statement 1: Employee Performance Bonus Eligibility\n",
+    "### Description:\n",
+    "### A company evaluates employee performance scores at the end of the year. You are given a dictionary containing employee names and their performance scores.\n",
+    "### Requirements:\n",
+    "- Identify the highest performance score.\n",
+    "- Handle ties if multiple employees have the same highest score.\n",
+    "- Display all employees eligible for the top performance bonus.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "783c00fe-fb67-45a6-a204-3d729b334027",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Top Performers Eligible for Bonus: \n",
+      "Ravi\n",
+      "Kiran\n",
+      "Score: 92\n"
+     ]
+    }
+   ],
+   "source": [
+    "employees = {\n",
+    "    \"Ravi\": 92,\n",
+    "    \"Anita\": 88,\n",
+    "    \"Kiran\": 92,\n",
+    "    \"Suresh\": 85\n",
+    "}\n",
+    "records = []          # list to store top performers\n",
+    "max1 = 0              # variable to track highest score\n",
+    "for employee in employees:\n",
+    "    if employees[employee] > max1:\n",
+    "        max1 = employees[employee]   # update max score\n",
+    "        records.clear()              # clear old records\n",
+    "        records.append(employee)     # add new top performer\n",
+    "    elif employees[employee] == max1:\n",
+    "        records.append(employee)     # add if score equals max\n",
+    "print(\"Top Performers Eligible for Bonus: \")\n",
+    "for record in records:\n",
+    "    print(record)\n",
+    "\n",
+    "print(\"Score:\", max1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9262a4e6-b7be-4fe5-b55d-be161d978d8f",
+   "metadata": {},
+   "source": [
+    "### Problem Statement 2: Search Query Keyword Analysis\n",
+    "### Description:\n",
+    "### An e-commerce website stores customer search queries. You are given a search query sentence entered by a user.\n",
+    "### Requirements:\n",
+    "- Convert the input to lowercase.\n",
+    "- Ignore common punctuation.\n",
+    "- Count the frequency of each keyword.\n",
+    "- Display only keywords searched more than once."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "0302a3b6-2a42-4c43-b4d4-4566a592fea2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "buy  :  2\n",
+      "phone  :  2\n"
+     ]
+    }
+   ],
+   "source": [
+    "query=\"Buy mobile phone buy phone online\"\n",
+    "words={} #storing the pairs with count\n",
+    "temp=query.split() # to make a list from the given string and store it as a list for easy access\n",
+    "for word in temp:\n",
+    "    words[word.lower()]=words.get(word,0)+1 #convert the word to lowercase and get to get occurance of each word in the dictionary.\n",
+    "for i in words:\n",
+    "    if words[i]>1:\n",
+    "        print(i,\" : \",words[i])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3a28a292-de36-4ab8-bbc2-aeca18ccd095",
+   "metadata": {},
+   "source": [
+    "### Problem Statement 3: Sensor Data Validation\n",
+    "### Description:\n",
+    "### A factory collects sensor readings every hour. Each reading is stored in a list where the index represents the hour and the value represents the sensor reading.\n",
+    "### Requirements:\n",
+    "- Identify readings that are even numbers (valid readings).\n",
+    "- Store them as (hour_index, reading_value) pairs.\n",
+    "- Ignore odd readings (invalid readings)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "f16b5509-eb3f-42ba-9bf3-bb8b49eb92ae",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Valid Sensor Readings (Hour,Value are)\n",
+      "[(1, 4), (3, 8), (4, 10), (5, 12)]\n"
+     ]
+    }
+   ],
+   "source": [
+    "sensor_readings = [3, 4, 7, 8, 10, 12, 5]\n",
+    "pairs=[]  #store even readings\n",
+    "for reading in range(0,len(sensor_readings)):\n",
+    "    if(sensor_readings[reading]%2==0):  #check even\n",
+    "        pairs.append((reading,sensor_readings[reading]))  #add (index,value)\n",
+    "print(\"Valid Sensor Readings (Hour,Value are)\")\n",
+    "print(pairs)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "520b978b-2c57-4e60-a7d6-188082d60f97",
+   "metadata": {},
+   "source": [
+    "### Problem Statement 4: Email Domain Usage Analysis\n",
+    "### Description:\n",
+    "### A company wants to analyze which email providers its users are using. You are given a list of employee email IDs.\n",
+    "### Requirements:\n",
+    "- Count how many users belong to each email domain.\n",
+    "- Calculate the percentage usage of each domain."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "c37a7637-7a49-46b9-97fa-9f01bdf4f111",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "gmail.com  is used by: 60.0 %\n",
+      "yahoo.com  is used by: 40.0 %\n"
+     ]
+    }
+   ],
+   "source": [
+    "emails = [\n",
+    "\"ravi@gmail.com\",\n",
+    "\"anita@yahoo.com\",\n",
+    "\"kiran@gmail.com\",\n",
+    "\"suresh@gmail.com\",\n",
+    "\"meena@yahoo.com\"\n",
+    "]\n",
+    "domains={}  #store domain counts\n",
+    "for email in emails:\n",
+    "    idx=email.find('@')  #find @ position\n",
+    "    domain=email[idx+1:]  #extract domain name\n",
+    "    domains[domain]=domains.get(domain,0)+1  #count domain\n",
+    "for domain in domains:\n",
+    "    val=(domains[domain]/len(emails))*100  #calc percentage\n",
+    "    print(domain,\" is used by:\",val,\"%\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "caf5f8dc-d832-4b6a-8041-399acee51c04",
+   "metadata": {},
+   "source": [
+    "### Problem Statement 5: Sales Spike Detection\n",
+    "### Description:\n",
+    "### A retail company tracks daily sales. Sudden spikes in sales may indicate promotions or unusual activity.\n",
+    "### Requirements:\n",
+    "- Calculate the average daily sales.\n",
+    "- Detect days where sales are more than 30% above average.\n",
+    "- Display the day number and sale value."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "659a942f-bdda-4434-b769-ba56a5b48b5c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Day 4 : 2200\n",
+      "Day 6 : 3000\n"
+     ]
+    }
+   ],
+   "source": [
+    "sales = [1200, 1500, 900, 2200, 1400, 3000]\n",
+    "sum_=0  #total sales\n",
+    "for amount in sales:\n",
+    "    sum_+=amount  #add each sale\n",
+    "avg=sum_/len(sales)  #calculate average\n",
+    "for amount in range(0,len(sales)):\n",
+    "    if sales[amount]>avg:  #check above average\n",
+    "        print(\"Day\",amount+1,\":\",sales[amount])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bc8e59be-e43c-4fbd-b4e1-8b983ea33c3c",
+   "metadata": {},
+   "source": [
+    "### Problem Statement 6: Duplicate User ID Detection\n",
+    "### Description:\n",
+    "### A system stores user IDs during registration. Duplicate IDs can cause data integrity issues.\n",
+    "### Requirements:\n",
+    "- Identify duplicate user IDs.\n",
+    "- Display how many times each duplicate appears."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "d5bf5994-70bf-4cc7-a588-4b1f1e15dcbe",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "user1  ->  3\n",
+      "user2  ->  1\n",
+      "user3  ->  2\n"
+     ]
+    }
+   ],
+   "source": [
+    "user_ids = [\"user1\", \"user2\", \"user1\", \"user3\", \"user1\", \"user3\"]\n",
+    "freq={}  #store frequency\n",
+    "for userid in user_ids:\n",
+    "    freq[userid]=freq.get(userid,0)+1  #count ids\n",
+    "for i in freq:\n",
+    "    print(i,\" -> \",freq[i])  #print id and count"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "47be8ce8-534a-4ec1-b0a8-6d9c7f1b3df2",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
